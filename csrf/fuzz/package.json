@@ -8,6 +8,7 @@
   "private": true,
   "dependencies": {
     "@types/node": "^16.10.1",
+    "cheerio": "^1.0.0-rc.10",
     "fzlib-node": "^0.0.3",
     "typescript": "^4.4.3"
   }
