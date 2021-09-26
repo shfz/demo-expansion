@@ -5,16 +5,13 @@ const totp = require("totp-generator");
 const fl = new Fuzzlib("http://localhost");
 
 (async () => {
-  // ユーザー登録
+  // ユーザー登録時に表示されるシークレットを取得
   let res = await fl.http.postForm("/register", {
     username: fl.fuzz.gen(char.lowercase()),
     password: fl.fuzz.genAscii(),
   });
-
-  // ユーザー登録時に表示されるシークレットを取得
   let $ = c.load(res.data);
   let totp_secret = $('p[id="totp"]').text();
-
   await fl.http.get("/logout");
 
   // シークレットからワンタイムパスワードを生成
