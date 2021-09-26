@@ -20,7 +20,7 @@ const fl = new Fuzzlib("http://localhost");
   // シークレットからワンタイムパスワードを生成
   const one_time_password = totp(totp_secret)
 
-  // ワンタイムパスワードを使用してログイン
+  // ワンタイムパスワードを使用してログインAPIをテストする
   await fl.http.postForm("/login", {
     username: fl.fuzz.gen(char.lowercase()),
     password: fl.fuzz.genAscii(),
