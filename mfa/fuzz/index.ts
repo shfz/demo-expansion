@@ -5,6 +5,7 @@ const totp = require("totp-generator");
 const fl = new Fuzzlib("http://localhost");
 
 (async () => {
+  // ユーザー登録
   let res = await fl.http.postForm("/register", {
     username: fl.fuzz.gen(char.lowercase()),
     password: fl.fuzz.genAscii(),
@@ -16,7 +17,7 @@ const fl = new Fuzzlib("http://localhost");
 
   await fl.http.get("/logout");
 
-  // ワンタイムパスワードを生成
+  // シークレットからワンタイムパスワードを生成
   const one_time_password = totp(totp_secret)
 
   // ワンタイムパスワードを使用してログイン
