@@ -132,6 +132,11 @@ is-redirect@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-redirect/-/is-redirect-1.0.0.tgz#1d03dded53bd8db0f30c26e4f95d36fc7c87dc24"
   integrity sha1-HQPd7VO9jbDzDCbk+V02/HyH3CQ=
 
+jssha@^3.1.2:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/jssha/-/jssha-3.2.0.tgz#88ec50b866dd1411deaddbe6b3e3692e4c710f16"
+  integrity sha512-QuruyBENDWdN4tZwJbQq7/eAK85FqrI4oDbXjy5IBhYD+2pTJyBUWZe8ctWaCkrV0gy6AaelgOZZBMeswEa/6Q==
+
 nth-check@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-2.0.0.tgz#1bb4f6dac70072fc313e8c9cd1417b5074c0a125"
@@ -165,6 +170,13 @@ punycode@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
+
+totp-generator@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/totp-generator/-/totp-generator-0.0.9.tgz#44318c67d0b163d3c4f2f6de6d8fa23bc77df3a9"
+  integrity sha512-ZrUn747mg6+FabOeUKP4neX2oUm69HjV1484kDYvtLfcGlO4XAq5xFwet/KJW7+zc2b09puTKCKMeTxzxfaKjw==
+  dependencies:
+    jssha "^3.1.2"
 
 tough-cookie@^4.0.0:
   version "4.0.0"

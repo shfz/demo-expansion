@@ -1,16 +1,26 @@
 import { Fuzzlib, char } from "fzlib-node";
+import * as c from "cheerio";
+const totp = require("totp-generator");
 
 const fl = new Fuzzlib("http://localhost");
 
 (async () => {
-  const res = await fl.http.postForm("/register", {
+  let res = await fl.http.postForm("/register", {
     username: fl.fuzz.gen(char.lowercase()),
     password: fl.fuzz.genAscii(),
   });
 
+  // ユーザー登録時に表示されるTOTPシークレットを取得
+  let $ = c.load(res.data);
+  let totp_secret = $('p[id="totp"]').text();
+
+  await fl.http.get("/logout");
+
+  // ワンタイムパスワードを使用してログイン
   await fl.http.postForm("/login", {
     username: fl.fuzz.gen(char.lowercase()),
     password: fl.fuzz.genAscii(),
+    totp: totp(totp_secret)
   });
 
   await fl.http.postForm("/memo", {
