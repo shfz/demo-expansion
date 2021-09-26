@@ -1,6 +1,5 @@
 import { Fuzzlib, char } from "fzlib-node";
 import * as c from "cheerio";
-const totp = require("totp-generator");
 
 const fl = new Fuzzlib("http://localhost");
 
@@ -15,6 +14,7 @@ const fl = new Fuzzlib("http://localhost");
   await fl.http.get("/logout");
 
   // シークレットからワンタイムパスワードを生成
+  const totp = require("totp-generator");
   const one_time_password = totp(totp_secret)
 
   // ワンタイムパスワードを使用してログインAPIをテストする
