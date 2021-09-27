@@ -9,14 +9,17 @@ const fl = new Fuzzlib("http://localhost");
     password: fl.fuzz.genAscii(),
   });
 
+  // ログインAPIをテスト
   const username = fl.fuzz.gen(char.lowercase())
   const res = await fl.http.postForm("/login", {
     username: username,
     password: fl.fuzz.genAscii(),
   });
+
+  // ページにユーザー名が正しく表示されているか確認
   let $ = c.load(res.data);
   if($('p[id="user"]').text() !== username) {
-    // error
+    fl.http.error("No username in /login")
   };
 
   await fl.http.postForm("/memo", {
